@@ -1,0 +1,82 @@
+package com.example.easycourse.CourseService.components;
+
+import com.example.easycourse.CourseService.repositories.BookingRepository.BookingRepository;
+import com.example.easycourse.CourseService.repositories.CourseRepository.CourseRepository;
+import com.example.easycourse.CourseService.repositories.CustomerRepository.CustomerRepository;
+import com.example.easycourse.CourseService.models.Booking;
+import com.example.easycourse.CourseService.models.Customer;
+import com.example.easycourse.CourseService.models.Course;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+@Component
+public class DataLoader implements ApplicationRunner {
+
+    @Autowired
+    CourseRepository courseRepository;
+    @Autowired
+    BookingRepository bookingRepository;
+    @Autowired
+    CustomerRepository customerRepository;
+
+
+
+    public DataLoader() {
+
+    }
+
+    public void run(ApplicationArguments args) {
+
+        DateFormat df = new SimpleDateFormat("dd-MM-yy");
+        String newDate = "24-12-18";
+        Date date = null;
+        try {
+             date =df.parse(newDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+        Course course1 = new Course("Intro To Python", "Glasgow",5);
+        courseRepository.save(course1);
+
+        Course course2 = new Course("JavaScript for beginners", "Edinburgh",4);
+        courseRepository.save(course2);
+
+        Customer customer1 = new Customer("Bob", "Modena", 30);
+        customerRepository.save(customer1);
+
+        Customer customer2 = new Customer("Jeff", "Novato", 41);
+        customerRepository.save(customer2);
+
+        Customer customer3 = new Customer("Jackie", "San Francisco", 40);
+        customerRepository.save(customer3);
+
+        Customer customer4 = new Customer("Eric", "Novato", 55);
+        customerRepository.save(customer4);
+
+        // Bob booked Python on xmas eve
+        Booking booking1 = new Booking(date, customer1, course1);
+        bookingRepository.save(booking1);
+
+        // jeff booked Javascript on xmas eve
+        Booking booking2 = new Booking(date, customer2, course2);
+        bookingRepository.save(booking2);
+
+        // Jackie booked javascript on 17th November
+        Booking booking3 = new Booking(date, customer3, course2);
+        bookingRepository.save(booking3);
+
+        //Eric booked javascript on xmas eve
+        Booking booking4  = new Booking(date, customer4, course2);
+        bookingRepository.save(booking4);
+
+    }
+}

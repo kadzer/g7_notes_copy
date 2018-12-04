@@ -1,0 +1,61 @@
+body {
+  font-family: fantasy;
+  background-color: #F7F7FF;
+}
+
+ul#list {
+  list-style-type: none;
+  padding-left: 0;
+  margin: auto;
+  margin-top: 0.5em;
+}
+
+li {
+  width: fit-content;
+  padding: 0.25em;
+  margin: 0.175em;
+  border-radius: 2px;
+  background-color: #070600;
+
+  color: #48ACF0;
+  border: 1px solid white;
+  margin: auto;
+}
+
+span.continent {
+  color: #CCDDE2;
+}
+
+span.continent::before {
+  content: ' - ';
+  color: #48ACF0;
+}
+
+span.species::before {
+  content: ' - ';
+}
+
+div.center-contents {
+  text-align: center;
+}
+
+form {
+  background-color: #EA526F;
+  width: fit-content;
+  padding: 0.5em;
+  text-align: center;
+  margin: auto;
+}
+
+div.form-element {
+  padding: 0.25em;
+  margin: 0.25em;
+}
+
+label::after, legend::after {
+  content: ':';
+}
+
+fieldset {
+  border: none;
+}

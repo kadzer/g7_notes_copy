@@ -1,0 +1,10 @@
+h1 {
+  font-family: "Brush Script MT";
+  font-size: 50px;
+}
+
+#map-container {
+  border: 1px solid black;
+  width: 700px;
+  height: 500px;
+}
